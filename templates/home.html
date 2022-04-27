@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Ваши заметки
+{% endblock %}
+
+{% block body %}
+<body class="bg-light">
+    <div class="container">
+        <h1>Все ваши заметки</h1>
+        {% if notes|length>0 %}
+            {% for el in notes %}
+            <div class="alert alert-info">
+                <h2> {{ el.title }} </h2>
+                <p>{{ el.text }}</p>
+                <p><b> Дата: {{el.date.date() }}</b></p>
+                <a href="/post/{{ el.id }}" class=""btn btn-warning">Подробнее</a>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p> У вас пока нет заметок</p>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
